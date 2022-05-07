@@ -1,0 +1,5 @@
+services:
+  phpfpm:
+    image: 'bitnami/php-fpm:latest'
+    volumes:
+      - .:/app
