@@ -16,7 +16,10 @@ class CoalShopClient implements ClientInterface
 
         $res = $client->request('GET', $this->url);
 
-        return file_get_contents(resource_path('mocks/coal-shop-page-available.html'));
-//        return $res->getBody()->getContents();
+        if (200 !== $res->getStatusCode()) {
+            throw new \RuntimeException('Shop does not respond');
+        }
+
+        return $res->getBody()->getContents();
     }
 }

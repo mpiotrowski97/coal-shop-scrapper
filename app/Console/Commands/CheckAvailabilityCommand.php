@@ -31,6 +31,8 @@ class CheckAvailabilityCommand extends Command
         }
 
         event(new CoalAvailableEvent());
+        Log::info('Checker finished');
+        $this->info('Checker finished');
     }
 
     /**
