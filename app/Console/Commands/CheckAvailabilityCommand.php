@@ -27,12 +27,15 @@ class CheckAvailabilityCommand extends Command
         $isAvailable = in_array(true, array_map(fn(CoalLine $item) => $item->isAvailable(), $items));
 
         if (!$isAvailable) {
+            Log::info('Checker finished with no items');
+            $this->info('Checker finished with no items');
             return;
         }
 
         event(new CoalAvailableEvent());
-        Log::info('Checker finished');
-        $this->info('Checker finished');
+
+        Log::info('Checker finished with success');
+        $this->info('Checker finished with success');
     }
 
     /**
